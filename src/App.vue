@@ -5,9 +5,6 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <routerView></routerView>
-  <div class="test">
-    test scss
-  </div>
 </template>
 
 <style scoped lang="scss">
