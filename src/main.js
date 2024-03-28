@@ -7,11 +7,6 @@ import router from './router'
 // 初始css樣式
 import '@/styles/common.scss'
 
-import { getCategory } from './apis/testAPI'
-getCategory().then(res => {
-    console.log(res)
-})
-
 const app = createApp(App)
 
 app.use(createPinia())
