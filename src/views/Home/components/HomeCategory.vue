@@ -1,5 +1,5 @@
 <script setup>
-import {useCategoryStore} from '@/stores/category'
+import { useCategoryStore } from '@/stores/category'
 const categoryStore = useCategoryStore()
 
 </script>
@@ -8,14 +8,15 @@ const categoryStore = useCategoryStore()
   <div class="home-category">
     <ul class="menu">
       <li v-for="item in categoryStore.categoryList" :key="item">
-        <RouterLink to="/">{{ item.name }}</RouterLink>
-        <RouterLink v-for="i in item.children.slice(0,2)" :key="i" to="/">{{ i.name }}</RouterLink>
+        <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+        <RouterLink v-for="i in item.children.slice(0, 2)" :key="i" :to="`/category/sub/${i.id}`">{{ i.name }}
+        </RouterLink>
         <!-- 彈層layer位置 -->
         <div class="layer">
           <h4>分類推薦 <small>根據您的購買或流覽記錄推薦</small></h4>
           <ul>
             <li v-for="i in item.goods" :key="i.id">
-              <RouterLink to="/">
+              <RouterLink :to="`/detail/${i.id}`">
                 <img :src="i.picture" alt="" />
                 <div class="info">
                   <p class="name ellipsis-2">

@@ -32,7 +32,7 @@ onMounted(() => getGoods())
           <div class="goods-info">
             <div class="media">
               <!-- 圖片預覽區 -->
-              <ImageView />
+              <ImageView :imageList="goods.mainPictures" />
               <!-- 統計數量 -->
               <ul class="goods-sales">
                 <li>
@@ -104,8 +104,8 @@ onMounted(() => getGoods())
                   <!-- 屬性 -->
                   <ul class="attrs">
                     <li v-for="item in goods.details.properties" :key="item.value">
-                      <span class="dt">{{item.name}}</span>
-                      <span class="dd">{{item.value}}</span>
+                      <span class="dt">{{ item.name }}</span>
+                      <span class="dd">{{ item.value }}</span>
                     </li>
                   </ul>
                   <!-- 圖片 -->
