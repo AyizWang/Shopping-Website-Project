@@ -6,7 +6,7 @@
     <nav class="app-topnav">
         <div class="container">
             <ul>
-                <template v-if="true">
+                <template v-if="false">
                     <li><a href="javascript:;"><i class=" iconfont icon-user"></i>周杰倫</a></li>
                     <li>
                         <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
@@ -19,7 +19,7 @@
                     <li><a href="javascript:;">會員中心</a></li>
                 </template>
                 <template v-else>
-                    <li><a href="javascript:;">請先登錄</a></li>
+                    <li><a href="javascript:;" @click="$router.push('/login')">請先登錄</a></li>
                     <li><a href="javascript:;">幫助中心</a></li>
                     <li><a href="javascript:;">關於我們</a></li>
                 </template>
