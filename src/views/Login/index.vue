@@ -3,7 +3,8 @@ import { ref } from 'vue'
 //帳號名+密碼
 const form = ref({
   account: '',
-  password: ''
+  password: '',
+  agree: false
 })
 const rules = {
   account: [
@@ -12,8 +13,28 @@ const rules = {
   password: [
     { required: true, message: '密碼不能為空', trigger: 'blur' },
     { min: 6, max: 14, message: '長度應為6-14個字符', trigger: 'blur' }
+  ],
+  agree: [
+    {
+      validator: (rule, value, callback) => {
+        console.log(value)
+        if(value){
+          callback()
+        }else{
+          callback(new Error('請勾選協議'))
+        }
+      }
+    }
   ]
 }
+//統一校驗
+  const formRef = ref(null)
+  const doLogin = ()=>{
+    formRef.value.validate((valid)=>{
+      //valid: 所有表單都通過校驗，才為true
+      console.log(valid)
+    })
+  }
 </script>
 
 
@@ -39,19 +60,19 @@ const rules = {
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
               <el-form-item prop="account" label="帳戶">
-                <el-input v-model="form.account"/>
+                <el-input v-model="form.account" />
               </el-form-item>
               <el-form-item prop="password" label="密碼">
-                <el-input v-model="form.password"/>
+                <el-input v-model="form.password" />
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox size="large">
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox size="large" v-model="form.agree">
                   我已同意隱私條款和服務條款
                 </el-checkbox>
               </el-form-item>
-              <el-button size="large" class="subBtn">登入</el-button>
+              <el-button size="large" class="subBtn" @click="doLogin">登入</el-button>
             </el-form>
           </div>
         </div>
