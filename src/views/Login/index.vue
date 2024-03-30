@@ -1,5 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import 'element-plus/theme-chalk/el-message.css'
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
 //帳號名+密碼
 const form = ref({
   account: '',
@@ -18,9 +23,9 @@ const rules = {
     {
       validator: (rule, value, callback) => {
         console.log(value)
-        if(value){
+        if (value) {
           callback()
-        }else{
+        } else {
           callback(new Error('請勾選協議'))
         }
       }
@@ -28,13 +33,21 @@ const rules = {
   ]
 }
 //統一校驗
-  const formRef = ref(null)
-  const doLogin = ()=>{
-    formRef.value.validate((valid)=>{
-      //valid: 所有表單都通過校驗，才為true
-      console.log(valid)
-    })
-  }
+const formRef = ref(null)
+const router = useRouter()
+const doLogin = () => {
+  const { account, password } = form.value
+  formRef.value.validate(async (valid) => {
+    //valid: 所有表單都通過校驗，才為true
+    console.log(valid)
+
+    if (valid) {
+      await userStore.getUserInfo({ account, password })
+      ElMessage({ type: 'success', message: '登入成功' })
+      router.replace({ path: '/' })
+    }
+  })
+}
 </script>
 
 
