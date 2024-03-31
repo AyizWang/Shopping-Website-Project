@@ -26,7 +26,6 @@ export const useCartStore = defineStore('cart', () => {
                 cartList.value.push(goods)
             }
         }
-
     }
     //刪除購物車
     const delCart = async (skuId) => {
@@ -42,7 +41,10 @@ export const useCartStore = defineStore('cart', () => {
     //購物車數量價格
     const allCount = computed(() => cartList.value.reduce((prev, item) => prev + item.count, 0))
     const allPrice = computed(() => cartList.value.reduce((prev, item) => prev + item.count * item.price, 0))
-
+    //清除購物車
+    const clearCart = ()=>{
+        cartList.value=[]
+    }
     //單選功能
     const singleCheck = (skuId, selected) => {
         const item = cartList.value.find((item) => item.skuId === skuId)
@@ -68,7 +70,8 @@ export const useCartStore = defineStore('cart', () => {
         isAll,
         allCheck,
         selectedCount,
-        selectedPrice
+        selectedPrice,
+        clearCart
     }
 }, {
     persist: true
