@@ -8,8 +8,7 @@ const getOrderInfo = async () => {
     const res = await getOrderAPI(route.query.orderId)
     orderInfo.value = res.result
 }
-onMounted(() => getOrderInfo()
-)
+onMounted(() => getOrderInfo())
 </script>
 
 
