@@ -1,35 +1,22 @@
-# vue-rabbit
+# 購物網站專案練習
+※此為 Vue.js 建構而成的電商平台網站。該網頁僅用於學習，不提供任何商業用途。
 
-This template should help get you started developing with Vue 3 in Vite.
+---
+### 使用技術
+- 網站使用Vue.js架設
+- Vue Vite管理專案
+- Vue-Router配置路由
+- Axios請求接口
+- Pinia狀態管理
+- Element Plus組件
+---
+### 實現功能
+- 首頁：輪播圖、導航欄、商品分類
+- 分類：一級分類、二級分類渲染
+- 商品：圖片展示、商品詳情、商品規格、加入購物車
+- 購物車：數量更改、商品刪除、價格計算
+- 登入：表單校驗、帳號登入
+- 支付：訂單內容、出貨地址
+- 個人中心：個人信息、訂單管理
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
