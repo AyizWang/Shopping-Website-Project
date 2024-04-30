@@ -19,6 +19,7 @@ const router = createRouter({
     {
       path: '/',
       component: Layout,
+      alias:'/Vue-Shopping-Website',
       children: [
         {
           path: '',
